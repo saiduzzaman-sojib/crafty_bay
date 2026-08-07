@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "51909586532",
+    "project_id": "sojib-portfolio",
+    "storage_bucket": "sojib-portfolio.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51909586532:android:0968582a33b60ca4013971",
+        "android_client_info": {
+          "package_name": "com.example.crafty_bay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_zSIv_h-aLx1lg4hA6xx_SWYZe2LOHgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
