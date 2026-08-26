@@ -2,7 +2,9 @@
 import 'package:crafty_bay/app/app_theme.dart';
 import 'package:crafty_bay/app/routes.dart';
 import 'package:crafty_bay/features/auth/presentation/screen/splash_screen.dart';
+import 'package:crafty_bay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class CraftyBayApp extends StatelessWidget {
   const CraftyBayApp({super.key});
@@ -12,10 +14,23 @@ class CraftyBayApp extends StatelessWidget {
     return MaterialApp(
       title: 'Crafty Bay ',
       initialRoute: SplashScreen.name,
+       localizationsDelegates: [
+       AppLocalizations.delegate,
+       GlobalMaterialLocalizations.delegate,
+       GlobalWidgetsLocalizations.delegate,
+       GlobalCupertinoLocalizations.delegate,
+  ],
       onGenerateRoute: AppRoutes.onGenerateRoute,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
+      
+      supportedLocales: [
+        Locale('en'),
+        Locale('bn'),
+        Locale('de'),
+      ],
+      locale: Locale('en'),
     );
   }
 }

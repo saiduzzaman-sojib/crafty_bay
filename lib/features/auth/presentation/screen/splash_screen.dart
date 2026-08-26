@@ -1,9 +1,12 @@
 
+import 'package:crafty_bay/app/extiontions/localization_extention.dart';
 import 'package:crafty_bay/features/auth/app_logo.dart';
+
 import 'package:flutter/material.dart';
 
 
 class SplashScreen extends StatefulWidget {
+  
   const SplashScreen({super.key});
 
   static const String name ='/';
@@ -15,6 +18,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
+    final localizations=context.localizations;
     return Scaffold(
       body: Center(
         child: Padding(
@@ -26,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               CircularProgressIndicator(),
               const SizedBox(height: 16,),
-              Text('Version 1.0.0')
+              Text('${localizations.version} 1.0.0'),
             ],
           ),
         ),
