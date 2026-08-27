@@ -1,36 +1,57 @@
 
 import 'package:crafty_bay/app/app_theme.dart';
+import 'package:crafty_bay/app/providers/locale_provider.dart';
 import 'package:crafty_bay/app/routes.dart';
 import 'package:crafty_bay/features/auth/presentation/screen/splash_screen.dart';
 import 'package:crafty_bay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
-class CraftyBayApp extends StatelessWidget {
+class CraftyBayApp extends StatefulWidget {
   const CraftyBayApp({super.key});
 
   @override
+  State<CraftyBayApp> createState() => _CraftyBayAppState();
+}
+
+class _CraftyBayAppState extends State<CraftyBayApp> {
+
+  final LocaleProvider _localeProvider = LocaleProvider();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _localeProvider.init ();
+  }
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Crafty Bay ',
-      initialRoute: SplashScreen.name,
-       localizationsDelegates: [
-       AppLocalizations.delegate,
-       GlobalMaterialLocalizations.delegate,
-       GlobalWidgetsLocalizations.delegate,
-       GlobalCupertinoLocalizations.delegate,
-  ],
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
-      
-      supportedLocales: [
-        Locale('en'),
-        Locale('bn'),
-        Locale('de'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: _localeProvider,),
       ],
-      locale: Locale('en'),
+      child: Consumer<LocaleProvider>(
+        builder: (context,_,_) {
+          return MaterialApp(
+            title: 'Crafty Bay ',
+            initialRoute: SplashScreen.name,
+             localizationsDelegates: [
+             AppLocalizations.delegate,
+             GlobalMaterialLocalizations.delegate,
+             GlobalWidgetsLocalizations.delegate,
+             GlobalCupertinoLocalizations.delegate,
+            ],
+            onGenerateRoute: AppRoutes.onGenerateRoute,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.light,
+            
+            supportedLocales:_localeProvider.supportLocales,
+            locale: _localeProvider.currentLocale,
+          );
+        }
+      ),
     );
   }
 }
