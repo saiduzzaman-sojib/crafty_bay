@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/auth/presentation/screen/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ class AppRoutes{
   switch(settings.name){
     case SplashScreen.name:
     widget=SplashScreen();
+    case SignUpScreen.name:
+    widget=SignUpScreen();
   }
 
   return MaterialPageRoute(builder:(_)=>widget);

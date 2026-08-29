@@ -2,6 +2,7 @@ import 'package:crafty_bay/app/extiontions/localization_extention.dart';
 import 'package:crafty_bay/app/providers/locale_provider.dart';
 import 'package:crafty_bay/app/providers/theme_provider.dart';
 import 'package:crafty_bay/features/auth/app_logo.dart';
+import 'package:crafty_bay/features/auth/presentation/screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,19 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+
+  void initState(){
+    super.initState();
+    _moveToNextScreen();
+  }
+   
+  Future<void> _moveToNextScreen()async{
+    await Future.delayed(Duration(seconds: 2));
+    Navigator.pushNamedAndRemoveUntil(
+    // ignore: use_build_context_synchronously
+    context, SignUpScreen.name, (predicate)=>false);
+  }
+  @override
   Widget build(BuildContext context) {
     final localizations = context.localizations;
     return Scaffold(
@@ -24,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
+              const SizedBox(height: 16,),
               const Spacer(),
               const AppLogo(),
               const SizedBox(height: 16),
